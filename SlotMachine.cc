@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <iostream>
 
-SlotMachine::SlotMachine(): evaluator(std::shared_ptr<PT> pt){
+SlotMachine::SlotMachine(): payl(makePayLines()),pt(makeDPT()),evaluator(pt){
 
     std::vector<Symbol> tape = {
         Symbol::Lemon,
@@ -19,38 +19,47 @@ SlotMachine::SlotMachine(): evaluator(std::shared_ptr<PT> pt){
 
     reels = {
         Reel(tape), Reel(tape), Reel(tape), Reel(tape), Reel(tape)};
+}
 
-    payl = makePayLines();
-
+int SlotMachine::getBalance() const{
+    return player.getBalance();
 }
 
 void SlotMachine::spin(){
 
-    if(player.canBet()){
-        player.placeBet();
-        
-        for(int i = 0 ; i < 5 ; i++){
-            reels[i].spin();
-        }
-
-        for(size_t col = 0 ; col < 5 ; col++){
-            for(size_t row = 0 ; row < 3 ; row++){
-                field.set(row, col, reels[col].at(row) );
-            }
-        }
-
-        double base_win = evaluator.schetall(field, payl);
-
-        if(base_win){
-            ++spin_count;
-        }
+    std::cout << "balance: " << player.getBalance() << std::endl;
     
-        double win = base_win * overdrive.mult(spin_count);
-
-        player.addWin(win);
-
-        field.print();
-
-        std::cout << player.getBalance() << std::endl;
+    int bet = 0;
+    std::cin >> bet;
+    
+    if (!player.placeBet(bet)) {
+        std::cout << "Not enough funds\n";
+        return;
     }
+    
+    for(int i = 0 ; i < 5 ; i++){
+        reels[i].spin();
+    }
+
+    for(size_t col = 0 ; col < 5 ; col++){
+        for(size_t row = 0 ; row < 3 ; row++){
+            field.set(row, col, reels[col].at(row) );
+        }
+    }
+
+    int multiplier = evaluator.schetall(field, payl);
+
+    if(multiplier){
+        ++spin_count;
+    }else{
+        spin_count = 0;
+    }
+
+    double win = bet * multiplier * overdrive.mult(spin_count);
+
+    player.addWin(static_cast<int>(win));
+
+    std::cout << multiplier << " " << overdrive.mult(spin_count) << std::endl;
+
+    field.print();
 }

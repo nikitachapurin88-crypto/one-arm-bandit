@@ -12,16 +12,18 @@
 
 class SlotMachine{
 private:
-    int spin_count = 0;
     Player player;
     Field field;
     std::vector<PayLine> payl;
+    std::vector<Reel> reels;
+    std::shared_ptr<PT> pt;
     E evaluator;
     od overdrive;
-    std::vector<Reel> reels;
+    int spin_count = 0;
 public:
-    SlotMachine() = default;
+    SlotMachine();
     void spin();
+    int getBalance() const;
 };
 
 #endif

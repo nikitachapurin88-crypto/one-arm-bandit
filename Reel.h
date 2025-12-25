@@ -10,6 +10,7 @@ class Reel: public IReel{
 private:
     std::vector<Symbol> tape_;
     std::size_t offset{0};
+    std::mt19937 rnd;
 
 public:
     Reel(std::vector<Symbol> tape);

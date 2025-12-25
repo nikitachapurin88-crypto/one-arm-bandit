@@ -5,11 +5,11 @@
 #include <time.h>
 
 Reel::Reel(std::vector<Symbol> tape)
-    : tape_(std::move(tape)){}
+    : tape_(std::move(tape)), rnd(std::random_device{}()){}
 
 void Reel::spin(){
-    srand(time(NULL));
-    offset = rand() % tape_.size() + 1;
+    std::uniform_int_distribution<int> dist(0, tape_.size() - 1);
+    offset = dist(rnd);
 }
 
 Symbol Reel::at(std::size_t row) const{

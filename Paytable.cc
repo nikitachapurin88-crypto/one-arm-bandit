@@ -26,24 +26,24 @@ bool PT::has(Symbol s, int count) const {
 std::shared_ptr<PT> makeDPT() {
     auto pt=std::make_shared<PT>();
 
-    pt->zachto(Symbol::Cherry,3,5);
-    pt->zachto(Symbol::Cherry,4,15);
-    pt->zachto(Symbol::Cherry,5,40);
+    pt->zachto(Symbol::Cherry,3,2);
+    pt->zachto(Symbol::Cherry,4,3);
+    pt->zachto(Symbol::Cherry,5,4);
 
-    pt->zachto(Symbol::Lemon,3,4);
-    pt->zachto(Symbol::Lemon,4,12);
-    pt->zachto(Symbol::Lemon,5,35);
+    pt->zachto(Symbol::Lemon,3,2);
+    pt->zachto(Symbol::Lemon,4,3);
+    pt->zachto(Symbol::Lemon,5,4);
 
-    pt->zachto(Symbol::Bonus,3,8);
-    pt->zachto(Symbol::Bonus,4,25);
-    pt->zachto(Symbol::Bonus,5,80);
+    pt->zachto(Symbol::Bonus,3,3);
+    pt->zachto(Symbol::Bonus,4,5);
+    pt->zachto(Symbol::Bonus,5,7);
 
-    pt->zachto(Symbol::Seven,3,10);
-    pt->zachto(Symbol::Seven,4,50);
-    pt->zachto(Symbol::Seven,5,200);
+    pt->zachto(Symbol::Seven,3,5);
+    pt->zachto(Symbol::Seven,4,10);
+    pt->zachto(Symbol::Seven,5,15);
 
-    pt->zachto(Symbol::Wild,3,12);
-    pt->zachto(Symbol::Wild,4,60);
-    pt->zachto(Symbol::Wild,5,250);
+    pt->zachto(Symbol::Wild,3,0);
+    pt->zachto(Symbol::Wild,4,0);
+    pt->zachto(Symbol::Wild,5,20);
     return pt;
 }

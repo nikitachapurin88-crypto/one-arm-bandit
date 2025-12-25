@@ -9,7 +9,7 @@ enum class Symbol{
     Bonus
 };
 
-char char_return(Symbol x){
+inline char char_return(Symbol x){
     switch (x){
     case Symbol::Cherry: 
         return 'C';
@@ -24,10 +24,10 @@ char char_return(Symbol x){
         return '#';
         break;
     case Symbol::Bonus: 
-        return '$';
+        return '$';       
         break;
     default:
-        break;
+         return '-';
     }
 }
  

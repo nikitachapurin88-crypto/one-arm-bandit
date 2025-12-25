@@ -1,32 +1,28 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include <iostream>
 
 class Player{
 private:
-    int balance = 100;
-public:
+    double balance = 100;
     int bet = 0;
-    bool canBet(){
-        if((balance - bet) >= 0){
+public:
+    Player() = default;
+
+    bool placeBet(int b){
+        if((balance - b) >= 0){
+            bet = b;
+            balance -= bet;
+            
             return true;
         }
         return false;
     }
-    void placeBet(){
-        if((balance - bet) >= 0){
-            balance -= bet;
 
-        }
-    }
-    void addWin(int amout){
-        if(amout >= 0){
-            balance += amout;
-        }
-        
+    void addWin(double amout){
+        balance += amout;    
     }
 
-    int getBalance(){
+    int getBalance() const{
         return balance;
     }
 
