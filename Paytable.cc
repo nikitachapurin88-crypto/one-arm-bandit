@@ -23,7 +23,7 @@ int PT::skoka(Symbol s, int count) const {
 bool PT::has(Symbol s, int count) const {
     return skoka(s,count) > 0;
 }
-std::shared_ptr<IPT> makeDPT() {
+std::shared_ptr<PT> makeDPT() {
     auto pt=std::make_shared<PT>();
 
     pt->zachto(Symbol::Cherry,3,5);

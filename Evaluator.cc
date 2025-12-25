@@ -39,7 +39,7 @@ win E::schet(const Field& field, const PayLine& line, int id) const {
     return {id,match,payout};
 }
 int E::schetall(const Field& field, const std::vector<PayLine>& lines) const {
-    int total=0
+    int total=0;
     for (int i=0; i<(int)lines.size(); ++i) {
         win w = schet(field,lines[i],i);
         total+=w.payout;  
