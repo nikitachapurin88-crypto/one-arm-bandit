@@ -34,9 +34,9 @@ std::shared_ptr<PT> makeDPT() {
     pt->zachto(Symbol::Lemon,4,12);
     pt->zachto(Symbol::Lemon,5,35);
 
-    pt->zachto(Symbol::Bar,3,8);
-    pt->zachto(Symbol::Bar,4,25);
-    pt->zachto(Symbol::Bar,5,80);
+    pt->zachto(Symbol::Bonus,3,8);
+    pt->zachto(Symbol::Bonus,4,25);
+    pt->zachto(Symbol::Bonus,5,80);
 
     pt->zachto(Symbol::Seven,3,10);
     pt->zachto(Symbol::Seven,4,50);

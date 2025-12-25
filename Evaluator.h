@@ -3,7 +3,7 @@
 #include <memory>        
 #include "Paytable.h"    
 #include "PayLine.h"     
-#include "symbol.h"     
+#include "Symbol.h"     
 class Field; 
 struct win{
     int id{};
@@ -17,6 +17,6 @@ public:
     win schet(const Field& field, const PayLine& line, int id) const;
     int schetall(const Field& field, const std::vector<PayLine>& lines) const;
 private:
-    std::shared_ptr<IPT> mpt; 
+    std::shared_ptr<PT> mpt; 
 };
 #endif

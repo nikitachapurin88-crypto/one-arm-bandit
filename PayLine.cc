@@ -1,7 +1,6 @@
 #include "PayLine.h"         
 #include "Field.h"          
-#include <utility>
-#include <stdexcept>           
+#include <utility>          
 PayLine::PayLine(std::vector<std::pair<int,int>> cells):mcells(std::move(cells)){}
 bool PayLine::proverka(const Field& f) const { 
     if ((int)mcells.size()!=f.cols())        

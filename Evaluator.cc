@@ -1,7 +1,7 @@
 #include "Evaluator.h"  
 #include "Field.h"       
 #include <stdexcept>     
-E::E(std::shared_ptr<IPT> pt): mpt(std::move(pt)){
+E::E(std::shared_ptr<PT> pt): mpt(std::move(pt)){
     if (!mpt) {
         throw std::invalid_argument("Evaluator: payTable is null");
     }
@@ -16,16 +16,14 @@ win E::schet(const Field& field, const PayLine& line, int id) const {
         for (auto [r, c] :cells) {             
             Symbol s = field.get(r, c);          
             if (s!=Symbol::Wild) {        
-                base = s;                        
+                base =s;                        
                 break;
             }
         }
     }
     int match =0;
-
     for (auto [r,c]: cells) {
-        Symbol s=field.get(r, c);
-
+        Symbol s=field.get(r,c);
         if (s==base || s==Symbol::Wild || base==Symbol::Wild) {
             ++match;    
         } else {

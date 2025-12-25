@@ -3,7 +3,7 @@
 #include <array>        
 #include <memory>      
 #include <unordered_map>
-#include "symbol.h"    
+#include "Symbol.h"    
 class PT{
 public:
     static constexpr mc=5;
@@ -13,7 +13,7 @@ public:
     int skoka(Symbol s,int count) const;
     bool has(Symbol s,int count) const;
 private:
-    std::unordered_map<Symbol,std::array<int,mc+1>> table;
+    std::unordered_map<Symbol ,std::array<int,mc+1>> table;
 };
 std::shared_ptr<PT> makeDPT();
 #endif
