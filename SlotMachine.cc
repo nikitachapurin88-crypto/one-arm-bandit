@@ -30,7 +30,12 @@ void SlotMachine::spin(){
     std::cout << "balance: " << player.getBalance() << std::endl;
     
     int bet = 0;
-    std::cin >> bet;
+    if(!(std::cin >> bet) || bet <= 0 ){
+        std::cin.clear();
+        std::cin.ignore(1000000, '\n');
+        std::cout << "invalid value\n";
+        return;
+    }
     
     if (!player.placeBet(bet)) {
         std::cout << "Not enough funds\n";
@@ -55,7 +60,7 @@ void SlotMachine::spin(){
         spin_count = 0;
     }
 
-    double win = bet * multiplier * overdrive.mult(spin_count);
+    int win = bet * multiplier * overdrive.mult(spin_count);
 
     player.addWin(static_cast<int>(win));
 

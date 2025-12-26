@@ -3,7 +3,7 @@
 
 class Player{
 private:
-    double balance = 100;
+    int balance = 100;
     int bet = 0;
 public:
     Player() = default;
