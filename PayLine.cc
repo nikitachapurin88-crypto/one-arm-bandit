@@ -5,11 +5,12 @@ PayLine::PayLine(std::vector<std::pair<int,int>> cells):mcells(std::move(cells))
 bool PayLine::proverka(const Field& f) const { 
     if (mcells.size()!=f.cols())
         return false;
-    for (auto [r, c] : mcells) {
+    for (auto [r,c]:mcells) {
         if (r<0 || r >= static_cast<int>(f.rows()))
             return false;
         if (c<0 || c >= static_cast<int>(f.cols()))
             return false;}
+    return true;
 }
 std::vector<PayLine> makePayLines() { 
     std::vector<PayLine> lines;                                
